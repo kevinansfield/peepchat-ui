@@ -1,25 +1,26 @@
----
 language: node_js
 node_js:
-  - "4"
-
+- '4'
 sudo: false
-
 cache:
   directories:
-    - $HOME/.npm
-    - $HOME/.cache # includes bowers cache
-
+  - "$HOME/.npm"
+  - "$HOME/.cache"
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - bower --version
-  - npm install phantomjs-prebuilt
-  - node_modules/phantomjs-prebuilt/bin/phantomjs --version
-
+- npm config set spin false
+- npm install -g bower
+- bower --version
+- npm install phantomjs-prebuilt
+- node_modules/phantomjs-prebuilt/bin/phantomjs --version
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Vd6WRKuU54sweLQ3xiklwb7JF3FLYRrEvljhJDKz7pjQ7CNarI0YL7xKmwCBrUU297yZW3UhIKuZbzButsPsenZfqDABeCFUW4DbQFGUoWB05bgq/Q+BEVTLwTxSamgkO6ZalNnlVVFMPfm3u4pRoYgmpUS8ypaRIXiX0EqaDwNyq03YIhRyrYPgAx8FNljtsrUfxFQqW6PF1ICxHcFTbTYoNkMW/2xo5PPAM+3sun8AMc6Kk87sPza0U8QDBpqqlwIs0fur9nJOqXg/uX7+TXP/hHcEwY6QaI62Q9U4QvfiMZ7qapCk+8NY9biSzd9uHBbICmQXjr0Acz6RQlDh/5SuUbCCzsiRoy/zDqRZrUCrUN7hR9nlcMScpRKzCLKzuRu/qWdUCEuBw51tGx+OvXfEQpqlEc46kF4k8OyZnH2CdA4SHfm6ubHAFJmf7ph2r0o0VTZm4Gm0YePbOqu8lG7pmumj29i5Rr25SFHQqTJ3KjLeTxeVr2+52e0kQz+GpUtROS2Qtemmq6MMYZeRk3TywDHCRRAIjMhPvnqSkoxCz8ZIQbOq/v1/OAZSMdpY+6FqaLHI+EPrc+tdOZ+JD4YOL+3BpHqcEyguCgpJJRmrzS0atNlbU5lGhhN1Uf6yHYFoBkzdRPDW2BNbnWJRY96laK8CiDTx1e7L1jEof0g=
+  app: tranquil-stream-34118
+  on:
+    repo: kevinansfield/peepchat-ui
